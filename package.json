@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint '{src,server}/**/*.{js,ts,tsx}' --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack --watch",
+    "web": "webpack serve",
+    "server": "nodemon ./server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +22,17 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "eslint-loader": "^4.0.2",
+    "express": "^4.17.1",
+    "html-webpack-plugin": "^5.3.1",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
