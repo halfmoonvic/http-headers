@@ -3,8 +3,11 @@ const app = express();
 
 const router = express.Router();
 
-router.get('/simple/test', (req, res) => {
-  res.send('Express Hello World !');
+router.get('/content-length', (req, res) => {
+  // overwritten by express 17
+  res.header('content-length', 19);
+
+  res.send('ExpressHelloWorld'); // length 17
 });
 
 app.use(router);
