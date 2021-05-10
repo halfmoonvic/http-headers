@@ -15,3 +15,19 @@ axios({
     server: 'express',
   },
 });
+
+axios({
+  method: 'get',
+  url: '/proxy/native/etag',
+  params: {
+    server: 'native',
+  },
+});
+
+axios({
+  method: 'get',
+  url: '/proxy/express/etag',
+  params: {
+    server: 'express',
+  },
+});

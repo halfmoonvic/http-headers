@@ -22,6 +22,21 @@ router.get('/last-modified', async (req, res) => {
   }
 });
 
+// etag
+let count = 0;
+
+router.get('/etag', function (req, res) {
+  const etag = req.headers['if-none-match'];
+  if (etag === '5') {
+    // status 304, browser will read cache directly
+    res.status(304);
+    res.end();
+  } else {
+    res.setHeader('ETag', count++);
+    res.end('express etag if-none-match');
+  }
+});
+
 app.use(router);
 
 const port = process.env.PORT || 3001;

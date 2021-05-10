@@ -2,6 +2,8 @@ const http = require('http');
 const server = http.createServer();
 const { sleep } = require('../util');
 
+let count = 0;
+
 server.on('request', async (req, res) => {
   if (req.url.indexOf('/last-modified') > -1) {
     const since = req.headers['if-modified-since'];
@@ -17,6 +19,22 @@ server.on('request', async (req, res) => {
 
       await sleep(2000);
       res.end('native last-modified if-modified-since');
+    }
+
+    return;
+  }
+
+  if (req.url.indexOf('/etag') > -1) {
+    const etag = req.headers['if-none-match'];
+    if (etag === '5') {
+      // status 304, browser will read cache directly
+      res.statusCode = 304;
+      res.end();
+    } else {
+      res.setHeader('ETag', count++);
+
+      await sleep(2000);
+      res.end('native etag if-none-match');
     }
 
     return;
