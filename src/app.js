@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios({
   method: 'get',
-  url: '/proxy/native/simple/test',
+  url: '/proxy/native/cache-control',
   params: {
     server: 'native',
   },
@@ -10,7 +10,7 @@ axios({
 
 axios({
   method: 'get',
-  url: '/proxy/express/simple/test',
+  url: '/proxy/express/cache-control',
   params: {
     server: 'express',
   },
@@ -18,5 +18,16 @@ axios({
 
 axios({
   method: 'get',
-  url: '/proxy/github/users',
+  url: '/proxy/native/expires',
+  params: {
+    server: 'native',
+  },
+});
+
+axios({
+  method: 'get',
+  url: '/proxy/express/expires',
+  params: {
+    server: 'express',
+  },
 });
