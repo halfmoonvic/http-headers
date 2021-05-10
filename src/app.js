@@ -1,22 +1,21 @@
 import axios from 'axios';
 
 axios({
-  method: 'get',
-  url: '/proxy/native/simple/test',
+  method: 'post',
+  url: '/proxy/native/login',
   params: {
     server: 'native',
   },
-});
-
-axios({
-  method: 'get',
-  url: '/proxy/express/simple/test',
-  params: {
-    server: 'express',
+  data: {
+    username: 'Fred',
+    password: '123456',
   },
-});
-
-axios({
-  method: 'get',
-  url: '/proxy/github/users',
+}).then(res => {
+  axios({
+    method: 'get',
+    url: '/proxy/native/user',
+    params: {
+      server: 'native',
+    },
+  });
 });
