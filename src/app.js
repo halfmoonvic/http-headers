@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios({
   method: 'get',
-  url: '/proxy/native/simple/test',
+  url: '/proxy/native/last-modified',
   params: {
     server: 'native',
   },
@@ -10,13 +10,8 @@ axios({
 
 axios({
   method: 'get',
-  url: '/proxy/express/simple/test',
+  url: '/proxy/express/last-modified',
   params: {
     server: 'express',
   },
-});
-
-axios({
-  method: 'get',
-  url: '/proxy/github/users',
 });
