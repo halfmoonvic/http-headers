@@ -1,22 +1,29 @@
 import axios from 'axios';
 
-axios({
-  method: 'get',
-  url: '/proxy/native/simple/test',
+// do not proxy by webpack
+const fetchNative = axios.create({ baseURL: 'http://localhost:3000' });
+const fetchExpress = axios.create({ baseURL: 'http://localhost:3001' });
+
+fetchNative({
+  headers: {
+    Authorization: 'Bear hahaaha',
+    'X-Custom-Header': '1234567890',
+  },
+  method: 'put',
+  url: '/no-simple-request/put',
   params: {
     server: 'native',
   },
 });
 
-axios({
-  method: 'get',
-  url: '/proxy/express/simple/test',
+fetchExpress({
+  headers: {
+    Authorization: 'Bear hahaaha',
+    'X-Custom-Header': '1234567890',
+  },
+  method: 'put',
+  url: '/no-simple-request/put',
   params: {
     server: 'express',
   },
-});
-
-axios({
-  method: 'get',
-  url: '/proxy/github/users',
 });
