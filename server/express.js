@@ -1,10 +1,14 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const app = express();
 
 const router = express.Router();
 
-router.get('/simple/test', (req, res) => {
-  res.send('Express Hello World !');
+router.get('/', function (req, res) {
+  res.send(
+    fs.readFileSync(path.join(__dirname, '../src/another.html')).toString(),
+  );
 });
 
 app.use(router);

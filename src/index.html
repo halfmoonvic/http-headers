@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index.html</title>
+  </head>
+
+  <body>
+    <div>index page</div>
+
+    <iframe
+      src="http://localhost:3001"
+      frameborder="0"
+      id="iframe"
+      onload="load()"
+    ></iframe>
+
+    <script>
+      function load() {
+        // 通过 iframe 拿到窗口对象
+        // 然后用这个窗口对象 postMessage
+        iframe.contentWindow.postMessage(
+          'index page msg',
+          'http://localhost:3001',
+        );
+
+        // 当前页面监听 message 消息
+        window.addEventListener('message', function (e) {
+          console.info(
+            `current page is index.html: received e.data ${e.data}, from origin ${e.origin}`,
+          );
+        });
+      }
+    </script>
+  </body>
+</html>

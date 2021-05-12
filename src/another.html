@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>another.html</title>
+  </head>
+
+  <body>
+    <div>another page</div>
+    <script>
+      window.addEventListener('message', function (e) {
+        console.info(
+          `current page is another.html: received e.data ${e.data}, from origin ${e.origin}`,
+        );
+
+        e.source.postMessage('another page msg', e.origin);
+      });
+    </script>
+  </body>
+</html>
